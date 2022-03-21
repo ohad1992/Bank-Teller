@@ -18,9 +18,13 @@ public class BankAdminstration extends Thread {
     @Override
     public void run() {
         super.run();
+        //get transaction
         Transaction t = transactions.getTransaction();
+        //while transactions resource not null
         while(t != null) {
+            // get account num
             Account a = accounts.get(t.getAccount_num());
+            // deposit or withdraw 
             a.transaction(t.getAmount());
             try {
                 sleep(new Random().nextInt(100));
